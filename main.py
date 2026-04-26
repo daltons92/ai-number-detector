@@ -40,6 +40,7 @@ class SimpleMLP(nn.Module):
         return logits
     
 model = SimpleMLP()
+model.load_state_dict(torch.load("model.pth", weights_only=True))
 
 criterion = nn.CrossEntropyLoss()
 
@@ -89,7 +90,6 @@ torch.save(model.state_dict(), "model.pth")
 print("Saved PyTorch Model State to model.pth")
 
 model = SimpleMLP().to("cpu")
-model.load_state_dict(torch.load("model.pth", weights_only=True))
 
 classes = [
     "0",
